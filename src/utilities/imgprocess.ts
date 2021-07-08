@@ -10,7 +10,7 @@ const convertImage = async (
 ): Promise<string> => {
   const file_path = path.join(
     __dirname,
-    "../../src/images/", 
+    "../../src/images/",
     `${image_title.toLowerCase()}.jpg`
   );
   const output_file_path = path.join(
@@ -20,23 +20,22 @@ const convertImage = async (
   );
 
   let image: fspromises.FileHandle;
-    try {
-      image = await fspromises.open(file_path, "r");
-    } catch {
-      throw new Error("Image was not found");
-    }
+  try {
+    image = await fspromises.open(file_path, "r");
+  } catch {
+    throw new Error("Image was not found");
+  }
 
-    try {
-      await sharp(await image.readFile())
-        .resize({ width, height })
-        .toFile(output_file_path);
-      image.close();
-    } catch {
-      image.close();
-      throw new Error("Sorry, cannot convert!");
-    }
-    return output_file_path;
-
+  try {
+    await sharp(await image.readFile())
+      .resize({ width, height })
+      .toFile(output_file_path);
+    image.close();
+  } catch {
+    image.close();
+    throw new Error("Sorry, cannot convert!");
+  }
+  return output_file_path;
 };
 
 export { convertImage };
