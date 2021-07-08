@@ -9,6 +9,10 @@ An Image Processing API which resizes and saves the images to the server.
 * Working with Express and using the File System Module
 
 ## Usage:
+
+Run Command:
+	npm install
+
 After setting up the node project. Visit the following link with the mentioned below query string variables.
 * image : icelandwaterfall (it's the image title)
 * width: desired width
